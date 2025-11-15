@@ -1,64 +1,52 @@
 /**
- * Registration Page
+ * Login Page
  * -------------------------
- * Allows a new user to create an account.
+ * Allows a user to log into the Sweet Shop system.
  *
  * Features:
- *  - Collects name, email, and password
- *  - Sends data to backend /register API
- *  - Shows error message if registration fails
- *  - Redirects to login page on success
+ *  - Login using email and password
+ *  - Stores JWT token + role in localStorage
+ *  - Redirects user based on role
  */
 
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-export default function Register() {
-  const [name, setName] = useState("");
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  /**
-   * Handles user registration request
-   */
-  const handleRegister = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
     try {
-      await axios.post("http://localhost:4000/api/auth/register", {
-        name,
+      const res = await axios.post("http://localhost:4000/api/auth/login", {
         email,
         password,
       });
 
-      // Redirect to login page after successful registration
-      window.location.href = "/login";
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("role", res.data.role);
+
+      // Redirect after login
+      window.location.href = "/dashboard";
 
     } catch (err: any) {
-      setError(err.response?.data?.error || "Registration failed");
+      setError(err.response?.data?.error || "Login failed");
     }
   };
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
 
-      <form onSubmit={handleRegister} className="bg-white p-6 rounded shadow w-96">
+      <form onSubmit={handleLogin} className="bg-white p-6 rounded shadow w-96">
+        <h2 className="text-2xl font-bold mb-4">Login</h2>
 
-        <h2 className="text-2xl font-bold mb-4">Register</h2>
-
-        {/* Show error if any */}
+        {/* Error message */}
         {error && <p className="text-red-600 mb-2">{error}</p>}
-
-        {/* Name */}
-        <input
-          type="text"
-          placeholder="Name"
-          className="w-full border p-2 rounded mb-2"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
 
         {/* Email */}
         <input
@@ -78,18 +66,18 @@ export default function Register() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        {/* Submit */}
-        <button className="w-full bg-green-600 text-white p-2 rounded hover:bg-green-700">
-          Register
+        {/* Login Button */}
+        <button className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
+          Login
         </button>
 
         {/* Navigation */}
         <p className="text-sm mt-2 text-center">
-          Already have an account?
-          <a href="/login" className="text-blue-600 ml-1">Login</a>
+          No account?
+          <Link to="/register" className="text-blue-600 ml-1">Register</Link>
         </p>
-
       </form>
+
     </div>
   );
 }

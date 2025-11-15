@@ -1,0 +1,16 @@
+/**
+ * Tailwind CSS Entry File
+ * --------------------------------------
+ * This file initializes Tailwind layers:
+ *  - base:      Browser resets + default styles
+ *  - components:Reusable component classes
+ *  - utilities: Utility classes (m-*, p-*, flex, grid, etc.)
+ *
+ * No custom CSS is required here unless you want
+ * to override Tailwind defaults or add global styles.
+ */
+
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
+ 

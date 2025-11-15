@@ -1,0 +1,27 @@
+# Node dependencies
+node_modules/
+
+# VS Code
+.vscode/
+
+# Build output
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+
+# Logs
+*.log
+
+# MacOS
+.DS_Store
+
+# Cache
+.cache/
+*.tsbuildinfo
+
+# Temporary
+tmp/
+temp/

@@ -108,19 +108,18 @@ export default function Dashboard() {
             <div
               key={sweet._id}
               className="p-4 border rounded shadow bg-white"
-            >
-              {/* IMAGE */}
-              {sweet.image ? (
-                <img
-                  src={sweet.image}
-                  alt={sweet.name}
-                  className="w-full h-40 object-cover rounded mb-3"
-                />
-              ) : (
-                <div className="w-full h-40 bg-gray-200 rounded mb-3 flex items-center justify-center text-gray-500">
-                  No Image
-                </div>
-              )}
+            >{sweet.image ? (
+              <img
+                src={`http://localhost:4000/${sweet.image}`}
+                alt={sweet.name}
+                className="w-full h-40 object-cover rounded mb-3"
+              />
+            ) : (
+              <div className="w-full h-40 bg-gray-200 rounded mb-3 flex items-center justify-center text-gray-500">
+                No Image
+              </div>
+            )}
+
 
               {/* DETAILS */}
               <h2 className="text-xl font-semibold">{sweet.name}</h2>
@@ -142,11 +141,10 @@ export default function Dashboard() {
               <button
                 disabled={sweet.quantity === 0}
                 onClick={() => handlePurchase(sweet._id)}
-                className={`mt-3 w-full p-2 rounded text-white ${
-                  sweet.quantity === 0
+                className={`mt-3 w-full p-2 rounded text-white ${sweet.quantity === 0
                     ? "bg-gray-400"
                     : "bg-green-600 hover:bg-green-700"
-                }`}
+                  }`}
               >
                 {sweet.quantity === 0 ? "Out of Stock" : "Purchase"}
               </button>

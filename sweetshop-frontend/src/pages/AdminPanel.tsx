@@ -178,10 +178,11 @@ export default function AdminPanel() {
             <div key={sweet._id} className="p-4 border rounded shadow bg-white">
               {/* IMAGE */}
               <img
-                src={sweet.image}
+                src={`http://localhost:4000/${sweet.image}`}
                 alt={sweet.name}
                 className="w-full h-40 object-cover rounded mb-3"
               />
+
 
               {/* DETAILS */}
               <h2 className="text-xl font-semibold">{sweet.name}</h2>

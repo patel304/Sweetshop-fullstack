@@ -18,6 +18,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use("/Images", express.static("Images"));
+
+
 // Route registration
 app.use("/api/auth", authRoutes);
 

@@ -28,7 +28,17 @@ const sweetNames = [
 // 🟢 Add your custom image path here later
 // imagePaths array LENGTH = sweetNames.length
 // Empty string means default image will be used.
-const imagePaths = new Array(sweetNames.length).fill("");
+const imagePaths = ["Images/laddu.jpeg","Images/jalebi.jpeg","Images/gulab-jamun.jpeg",
+  "Images/rasgulla.jpeg","Images/barfi.jpeg","Images/peda.jpeg","Images/kaju-katli.jpeg",
+  "Images/soan-papdi.jpeg","Images/cham-cham.jpeg","Images/malai-sandwich.jpeg","Images/Kheer-kadam.jpeg",
+"Images/sandesh.jpeg","Images/imarti.jpeg","Images/bulashahi.jpeg","Images/chikki.jpeg",
+"Images/motichor.jpeg","Images/boondi.jpeg","Images/halwa.jpeg","Images/milk-cake.jpeg",
+"Images/badam burfi.jpeg","Images/Besan-laddu.jpeg","Images/mysore-pak.jpeg","Images/dry-fruit-laddu.jpeg",
+"Images/khoya-burfi.jpeg","Images/coconut-burfi.jpeg","Images/til-laddu.jpeg","Images/kesar-peda.jpeg",
+"Images/chocalate-burfi.jpeg","Images/Rabri.jpeg","Images/gajar halwa.jpeg","Images/dhoodh-peda.jpeg",
+"Images/anjir-burfi.jpeg","Images/pista-roll.jpeg","Images/cham-cham.jpeg","Images/ras-malai.jpeg",
+"Images/kaju-roll.jpeg","Images/son-roll.jpeg","Images/imarti.jpeg","Images/sugar-free.jpeg"
+];
 
 const generateSweet = (i: number) => {
   const name =
